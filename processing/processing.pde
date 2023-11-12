@@ -18,7 +18,7 @@ int indiceReplay = 0;
 PrintWriter writer; // Declarar un objeto PrintWriter
 
 //Completar con el nombre del puerto serial
-String Puerto = "COM6";
+String Puerto = "COM4";
 boolean Start = false;
 
 Serial puertoSerial;  // Objeto Serial para la comunicación con Arduino

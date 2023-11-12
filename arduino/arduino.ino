@@ -60,7 +60,7 @@ unsigned long intervaloCambioDireccion = 800; // Intervalo de tiempo para cambia
 
 int direccionActual = 1; // Dirección de movimiento actual (1 para arriba, -1 para abajo)
 
-int dificultad = 5;   //Dificultad de la IA
+int dificultad = 3;   //Dificultad de la IA
 
 
 void seguirPelota(){
@@ -96,9 +96,10 @@ void movimientoAleatorio() {
 }
 
 void setup() {
-  analogWrite(11,70);    //Establece el brillo de la pantalla LCD
+  analogWrite(11,120);    //Establece el brillo de la pantalla LCD
   lcd.begin(16,2);    //Inicializa el LCD
   pinMode(13, OUTPUT);    //Pin para el LED
+  digitalWrite(13,HIGH);
   Serial.begin(19200);    //Velocidad del serial
   randomSeed(analogRead(0));    // Inicializa la semilla aleatoria
   Serial.println("Done!");    //Primer mensaje al iniciar Arduino
@@ -238,9 +239,9 @@ void loop() {
     direccionPelotaX = random(2) == 0 ? -5 : 5; // Cambiar la dirección X de la pelota
     direccionPelotaY = random(2) == 0 ? -5 : 5; // Cambiar la dirección Y de la pelota
     Player_2.changeScore();
-    digitalWrite(13,HIGH);
-    delay(100);
     digitalWrite(13,LOW);
+    delay(100);
+    digitalWrite(13,HIGH);
   } else if (pelotaX > 960) {
     // Puntuación para jugador 1
     pelotaX = 480; // Reiniciar la posición de la pelota
@@ -248,9 +249,9 @@ void loop() {
     direccionPelotaX = random(2) == 0 ? -5 : 5; // Cambiar la dirección X de la pelota
     direccionPelotaY = random(2) == 0 ? -5 : 5; // Cambiar la dirección Y de la pelota
     Player_1.changeScore();
-    digitalWrite(13,HIGH);
-    delay(100);
     digitalWrite(13,LOW);
+    delay(100);
+    digitalWrite(13,HIGH);
   }
   // Envía la posición de la pelota y las paletas por serial a Processing
   Serial.print(Player_1.PosValue());
