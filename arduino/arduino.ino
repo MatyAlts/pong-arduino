@@ -1,8 +1,8 @@
 #include <LiquidCrystal.h>
 LiquidCrystal lcd (2,3,4,5,6,7);
 
-const int MIN_PALETA_IA_Y = 10;   // Posición mínima de la paleta de la IA
-const int MAX_PALETA_IA_Y = 400;  // Posición máxima de la paleta de la IA
+const int MIN_PALETA_IA_Y = 0;   // Posición mínima de la paleta de la IA
+const int MAX_PALETA_IA_Y = 420;  // Posición máxima de la paleta de la IA
 
 class Player{
   private:
@@ -187,13 +187,13 @@ void loop() {
       if (mensaje.equals("dificil\n")) {
         // Si el mensaje es igual a "dificil", cambia la dificultad del juego
         diff = "hard";
-        dificultad = 5;
+        dificultad = 3;
       }
       // Verifica si el mensaje recibido es igual a "facil"
       if (mensaje.equals("facil\n")) {
         // Si el mensaje es igual a "facil", cambia la dificultad del juego
         diff = "easy";
-        dificultad = 20;
+        dificultad = 15;
       }
     }
     /**************************************************************************************************/
@@ -205,7 +205,7 @@ void loop() {
   int valorPot = analogRead(potPin);
 
   // Mapea el valor del potenciómetro al rango de la pantalla (10 a 420)
-  Player_1.changePos(map(valorPot, 0, 1023, 10, 420));
+  Player_1.changePos(map(valorPot, 0, 1023, 0, 420));
 
   if (pelotaX > 480) {
     // La pelota está más allá del límite, sigue la configuración de seguimiento
